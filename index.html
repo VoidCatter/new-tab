@@ -1,54 +1,101 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>New Tab</title>
-	</head>
 
-	<body>
-		<form id="form">
-			<input type="search" id="search" name="search_bar" placeholder="Search"/>
-			<input type="submit" value="Submit">
-			<input type="radio" value="google" name="engine_selector">
-			<input type="radio" value="bing" name="engine_selector">
-			<input type="radio" value="brave" name="engine_selector" checked>
-			<input type="radio" value="ddg" name="engine_selector">
-			<input type="radio" value="startpage" name="engine_selector">
-			<input type="radio" value="qwant" name="engine_selector">
-		</form>
-	</body>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>New Tab</title>
+</head>
+
+<body>
+	<form id="form">
+		<div id="outer_bar" class="bar">
+			<input id="search" class="bar" type="text" id="search" name="search_bar" placeholder="Search" />
+			<input id="submit" class="bar" type="submit" value=">">
+		</div>
+		<input type="radio" value="google" name="engine_selector">
+		<input type="radio" value="bing" name="engine_selector">
+		<input type="radio" value="brave" name="engine_selector" checked>
+		<input type="radio" value="ddg" name="engine_selector">
+		<input type="radio" value="startpage" name="engine_selector">
+		<input type="radio" value="qwant" name="engine_selector">
+	</form>
+</body>
 
 
-	<script>
-		const Engines = {
-			google: "https://www.google.com/search?q=",
-			bing: "https://www.bing.com/search?q=",
-			brave: "https://search.brave.com/search?q=",
-			ddg: "https://duckduckgo.com/?q=",
-			startpage: "https://www.startpage.com/search?q=",
-			qwant: "https://www.qwant.com/?q="
-		};
+<script>
+	const Engines = {
+		google: "https://www.google.com/search?q=",
+		bing: "https://www.bing.com/search?q=",
+		brave: "https://search.brave.com/search?q=",
+		ddg: "https://duckduckgo.com/?q=",
+		startpage: "https://www.startpage.com/search?q=",
+		qwant: "https://www.qwant.com/?q="
+	};
 
-		document.getElementById("form").addEventListener("submit", (event) => {
-			event.preventDefault();
-			const data = new FormData(event.target);
+	document.getElementById("form").addEventListener("submit", (event) => {
+		event.preventDefault();
+		const data = new FormData(event.target);
 
-			engine = data.get("engine_selector")
+		engine = data.get("engine_selector")
 
-			for (const i in Engines) {
-				if (engine == i) {
-					engine = Engines[i];
-				}
+		for (const i in Engines) {
+			if (engine == i) {
+				engine = Engines[i];
 			}
+		}
 
-			window.open(engine + data.get("search_bar").replace(/ /g, '+'),"_self")
-		});
-	</script>
+		window.open(engine + data.get("search_bar").replace(/ /g, '+'), "_self")
+	});
+</script>
 
 
-	<style>
-		
-	</style>
+<style>
+	body {
+		height: 100vh;
+		margin: 0;
+		display: flex;
+		justify-content: center; /* horizontal center */
+		align-items: center;     /* vertical center */
+
+		background-color: #171717;
+		color: white;
+	}
+
+	.bar {
+		background-color: #454545;
+		color: white;
+
+		text-decoration: none;
+		font-size: 1.65rem;
+
+		border-radius: 15px;
+		border: none;
+	}
+
+	#outer_bar {
+		padding: 7px;
+		padding-left: 10px;
+		border-radius: 15px;
+		width: 40rem;
+	}
+
+	#submit:hover { background-color: #00C2FF; }
+	#submit {
+		background-color: #00A7E0;
+		color: #454545;
+
+		width: 4rem;
+		height: 4rem;
+		transition-duration: 300ms;
+	}
+
+	#search {
+		padding: 5px;
+		width: 35rem;
+		outline: none; 
+	}
+	
+</style>
 
 </html>
