@@ -13,12 +13,25 @@
 			<input id="search" class="bar" type="text" id="search" name="search_bar" placeholder="Search" />
 			<input id="submit" class="bar" type="submit" value=">">
 		</div>
-		<input type="radio" value="google" name="engine_selector">
-		<input type="radio" value="bing" name="engine_selector">
-		<input type="radio" value="brave" name="engine_selector" checked>
-		<input type="radio" value="ddg" name="engine_selector">
-		<input type="radio" value="startpage" name="engine_selector">
-		<input type="radio" value="qwant" name="engine_selector">
+		<div id="engines">
+			<input type="radio" value="google" name="engine_selector">
+			<label for="google">Google</label><br>
+
+			<input type="radio" value="bing" name="engine_selector">
+			<label for="bing">Bing</label><br>
+
+			<input type="radio" value="brave" name="engine_selector" checked>
+			<label for="brave">Brave</label><br>
+
+			<input type="radio" value="ddg" name="engine_selector">
+			<label for="ddg">Duck Duck Go</label><br>
+
+			<input type="radio" value="startpage" name="engine_selector">
+			<label for="startpage">Start Page</label><br>
+
+			<input type="radio" value="qwant" name="engine_selector">
+			<label for="qwant">Qwant</label><br>
+		</div>
 	</form>
 </body>
 
@@ -52,12 +65,6 @@
 
 <style>
 	body {
-		height: 100vh;
-		margin: 0;
-		display: flex;
-		justify-content: center; /* horizontal center */
-		align-items: center;     /* vertical center */
-
 		background-color: #171717;
 		color: white;
 	}
@@ -74,13 +81,18 @@
 	}
 
 	#outer_bar {
+		position: absolute;
+		top: 45%;
+		left: 50%;
+		transform: translateX(-50%);
+
 		padding: 7px;
 		padding-left: 10px;
 		border-radius: 15px;
 		width: 40rem;
 	}
 
-	#submit:hover { background-color: #00C2FF; }
+	
 	#submit {
 		background-color: #00A7E0;
 		color: #454545;
@@ -89,12 +101,33 @@
 		height: 4rem;
 		transition-duration: 300ms;
 	}
+	#submit:hover { background-color: #00C2FF; }
 
 	#search {
 		padding: 5px;
 		width: 35rem;
 		outline: none; 
 	}
+
+	#engines {
+		position: absolute;
+		left: 15px;
+		bottom: 15px;
+	}
+	
+	input[type="radio"] {
+		width: 12px;
+		height: 12px;
+		border-radius: 50%;
+		background-color: #454545;
+		appearance: none;
+		transition-duration: 300ms;
+	}
+	input[type="radio"]:hover {
+		background-color: #505050;
+	}
+	input[type="radio"]:checked { background-color: #00A7E0; }
+	input[type="radio"]:checked:hover { background-color: #00C2FF; }
 	
 </style>
 
